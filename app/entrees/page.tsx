@@ -1,6 +1,6 @@
 'use client';
 import React from "react";
-import Link from 'next/link'
+import {useRouter} from "next/navigation";
 import { useState, useEffect } from 'react'
 let display = "test";
 fetch("entreeText.txt")
@@ -15,17 +15,22 @@ fetch("entreeText.txt")
   });
 
 export default function home(){
+  const router = useRouter();
   return (
-    <text>
+    <><text>
     <ul>
       <li>
-        <Link href="/home">Home!!</Link>
+      <button onClick={() => router.push('/home')}>
+          Home!!
+        </button>
       </li>
       <li>
-        <Link href="/appetizers">Appetizers!!</Link>
+      <button onClick={() => router.push('/appetizers')}>
+          Appetizers!!
+        </button>
       </li>
     </ul>
     <p>{display}</p>
-    </text>
+    </text></>
   )
 }
